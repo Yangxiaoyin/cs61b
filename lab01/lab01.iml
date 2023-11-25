@@ -9,5 +9,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="algs4" level="project" />
+    <orderEntry type="library" name="junit.jupiter1" level="project" />
+    <orderEntry type="library" name="google.truth.extensions.java8.extension" level="project" />
   </component>
 </module>
