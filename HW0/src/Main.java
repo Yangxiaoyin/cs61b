@@ -16,6 +16,11 @@ public class Main {
         printIndexed("ZELDA");
         stutter("Hello");
         quadrant(2,4);
+        quadrant(12.4, 17.8);
+        quadrant(-2.3, 3.5);
+        quadrant(-15.2, -3.1);
+        quadrant(4.5, -42.0);
+        quadrant(0.0, 3.14);
         System.out.println("Hello world!");
     }
     public static void printIndexed(String a)
