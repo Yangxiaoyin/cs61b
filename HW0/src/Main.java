@@ -12,6 +12,7 @@ public class Main {
             System.out.println();
 
         }
+        /*test case*/
         printIndexed("ZELDA");
         stutter("Hello");
         quadrant(2,4);
