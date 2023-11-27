@@ -62,7 +62,6 @@ public class NaiveLetterFreqGuesser implements Guesser {
             }
         }
         int max = 0;
-//
         Map<Character, Integer> MaxValueOutput = new TreeMap<>();
         for (Map.Entry<Character, Integer> entry : output.entrySet()) {
             if (max == entry.getValue()) {
