@@ -121,6 +121,10 @@ public class Model extends Observable {
                if(moveTileAfterMerge(column,row,boundry-1))
                    changed=true;
            }
+           for(int row=0;row<boundry;row++){
+               if(moveTileAfterMerge(column,row,boundry-1))
+                   changed=true;
+           }
            //consolidate
 
        }
@@ -169,7 +173,7 @@ public class Model extends Observable {
                             if(t1.value()==t2.value()){
                                 board.move(col,row,t2);
                                 changed=true;
-                                score=t1.value()*2;
+                                score+=t1.value()*2;
                                 return changed;
                             }else return false;
                         }
@@ -249,34 +253,42 @@ public class Model extends Observable {
                     int compare = b.tile(j, i).value();
                     System.out.println("compare cordinate " + j + " " + i + " value : " + compare);
                     if (i < boundry && (j + 1) < boundry) {
-                        int to_compare = b.tile(j + 1, i).value();
-                        System.out.println(to_compare + " to compare cordinate: " + (j + 1) + " " + " " + i);
-                        if (Objects.equals(to_compare, compare)) {
-                            return true;
+                        if(b.tile(j + 1, i)!=null){
+                            int to_compare = b.tile(j + 1, i).value();
+                            System.out.println(to_compare + " to compare cordinate: " + (j + 1) + " " + " " + i);
+                            if (Objects.equals(to_compare, compare)) {
+                                return true;
+                            }
                         }
                     }
 
                     if (i + 1 < boundry && j < boundry) {
-                        int to_compare = b.tile(j , i+1).value();
-                        System.out.println(to_compare + " to compare cordinate: " + j + " " + (i+1) );
-                        if (b.tile(j, i + 1).value() == compare) {
-                            return true;
+                        if(b.tile(j , i+1)!=null){
+                            int to_compare = b.tile(j , i+1).value();
+                            System.out.println(to_compare + " to compare cordinate: " + j + " " + (i+1) );
+                            if (b.tile(j, i + 1).value() == compare) {
+                                return true;
+                            }
                         }
                     }
 
                     if ((i-1)>=0&&i - 1 < boundry && j < boundry) {
-                        int to_compare = b.tile(j , i-1).value();
-                        System.out.println( to_compare + " to compare cordinate: " + j + " " + (i-1) );
-                        if (b.tile(j, i - 1).value() == compare) {
-                            return true;
+                        if(b.tile(j , i-1)!=null){
+                            int to_compare = b.tile(j , i-1).value();
+                            System.out.println( to_compare + " to compare cordinate: " + j + " " + (i-1) );
+                            if (b.tile(j, i - 1).value() == compare) {
+                                return true;
+                            }
                         }
                     }
 
                     if ((j-1)>=0&&i < boundry && (j - 1) < boundry) {
-                        int to_compare = b.tile(j -1, i).value();
-                        System.out.println(to_compare + " to compare cordinate: " + (j-1) + " " + i );
-                        if (b.tile(j - 1, i).value() == compare) {
-                            return true;
+                        if(b.tile(j-1 , i)!=null){
+                            int to_compare = b.tile(j -1, i).value();
+                            System.out.println(to_compare + " to compare cordinate: " + (j-1) + " " + i );
+                            if (b.tile(j - 1, i).value() == compare) {
+                                return true;
+                            }
                         }
                     }
                 }

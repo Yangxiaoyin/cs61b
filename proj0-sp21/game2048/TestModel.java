@@ -98,12 +98,20 @@ public class TestModel extends TestUtils {
                 {2, 0, 0, 0},
                 {0, 0, 0, 0},
                 {4, 0, 0, 0},
+//                {0, 0, 0, 0},
+//                {0, 0, 0, 0},
+//                {0, 0, 0, 0},
+//                {4, 0, 0, 0},
         };
         int[][] after = new int[][]{
                 {4, 0, 0, 0},
                 {4, 0, 0, 0},
                 {0, 0, 0, 0},
                 {0, 0, 0, 0},
+//                {4, 0, 0, 0},
+//                {0, 0, 0, 0},
+//                {0, 0, 0, 0},
+//                {0, 0, 0, 0},
         };
         updateModel(before, 0, 0, false);
         String prevBoard = model.toString();
