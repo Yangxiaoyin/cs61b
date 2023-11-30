@@ -110,6 +110,7 @@ public class Model extends Observable {
     public boolean tilt(Side side) {
         boolean changed;
         changed = false;
+        board.setViewingPerspective(side);
         int boundry=board.size();
         //board.setViewingPerspective(side);
        for(int column=0;column<boundry;column++){
@@ -117,18 +118,15 @@ public class Model extends Observable {
                if(UpdateValueTile(column,row))
                    changed=true;
            }
+
+           //consolidate need to fix here, how to handle three moves
            for(int row=0;row<boundry;row++){
-               if(moveTileAfterMerge(column,row,boundry-1))
+               if(moveTileAfterMerge(column,boundry-1))
                    changed=true;
            }
-           for(int row=0;row<boundry;row++){
-               if(moveTileAfterMerge(column,row,boundry-1))
-                   changed=true;
-           }
-           //consolidate
 
        }
-
+       board.setViewingPerspective(Side.NORTH);
 
 
 
@@ -143,19 +141,25 @@ public class Model extends Observable {
         return changed;
     }
 
-    private boolean moveTileAfterMerge(int col,int row,int row_size){
-
-        if(row<row_size){
-            Tile t=board.tile(col,row);
-            Tile t2=board.tile(col,row+1);
-            if(t!=null&&t2==null){
-                board.move(col,row+1,t);
+    private boolean moveTileAfterMerge(int col,int row_size){
+        int max_empty_row=row_size;
+        for(int i=row_size;i>=0;i--) {
+            Tile t = board.tile(col, i);
+            if (t == null) {
+                max_empty_row = i;
+                break;
+            }
+        }
+        for(int i=max_empty_row-1;i>=0;i--) {
+            Tile t = board.tile(col, i);
+            if (t != null) {
+                board.move(col,max_empty_row,t);
                 return true;
             }
         }
-
         return false;
     }
+
 
     private boolean  UpdateValueTile(int col,int start_row){
         boolean changed=false;
